@@ -1,2 +1,11 @@
-<h1>Welcome</h1>
-<p>This is a basic chat app</p>
+<h1>ChatRoom</h1>
+<% @rooms.each do |room| %>
+  <div class="btn-block">
+    <%= room.name %><br>
+  </div>
+<% end %>
+
+<%= form_for Room.new, url: {controller: "rooms", action: "create"} do |f| %>
+    Name: <%= f.text_field :name %><br />
+    <%= f.submit nil, label: "Create" %>
+<% end %>
