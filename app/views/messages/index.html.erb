@@ -1,0 +1,22 @@
+<h1>Messages for room <%= @room.name %></h1>
+<table>
+  <thead>
+    <th>Sender</th>
+    <th>Content</th>
+  </thead>
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.username %></td>
+        <td><%= message.content %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if current_user %>
+  <%= form_for [@room, Message.new] do |f| %>
+    <%= f.text_area :content, placeholder: "Enter message" %>
+    <%= f.submit %>
+  <% end %>
+<% end %>
